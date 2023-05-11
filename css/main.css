@@ -110,6 +110,7 @@ body {
   cursor: pointer;
   padding: 10px 5px;
   margin: 10px 5px;
+  margin-top: 4rem;
 }
 
 #msform .action-button:hover,
@@ -119,7 +120,7 @@ body {
 
 #msform .action-button-previous {
   width: 100px;
-  background: #c5c5f1;
+  background: var(--blue3);
   font-weight: bold;
   color: white;
   border: 0 none;
@@ -137,7 +138,6 @@ body {
 /*headings*/
 .fs-title {
   font-size: 18px;
-  text-transform: uppercase;
   color: #2c3e50;
   margin-bottom: 10px;
   letter-spacing: 2px;
@@ -229,4 +229,91 @@ body {
 .dme_link a:focus {
   background: #c5c5f1;
   text-decoration: none;
+}
+
+/* Style for the fieldset */
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Style for the h2 title */
+.fs-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Style for the h3 subtitle */
+.fs-subtitle {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* Style for the radio buttons */
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"] + label {
+  display: inline-block;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: 2px solid #ccc;
+  margin-right: 10px;
+  margin-top: 1em;
+  cursor: pointer;
+  width: 8rem;
+}
+
+input[type="radio"]:checked + label {
+  background-color: var(--blue1);
+  color: #fff;
+  border-color: var(--blue1);
+}
+
+/* Style for the Next button */
+.action-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.action-button:hover {
+  background-color: #0069d9;
+}
+
+/* success page */
+
+.success-body {
+  background-color: var(--blue1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.success-message {
+  background-color: var(--white);
+  padding: 50px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.3);
+}
+
+.button {
+  padding: 10px 20px;
+  background-color: var(--red1);
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
 }
