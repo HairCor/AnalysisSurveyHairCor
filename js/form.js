@@ -8,7 +8,7 @@ var animating; //flag to prevent quick multi-click glitches
 
 // copied from https://stackoverflow.com/questions/57939882/saving-form-submitted-data-to-csv-file-using-javascript-jquery
 function clearForm() {
-  document.getElementById("form").reset();
+  document.getElementById("msform").reset();
 }
 
 function submitForm() {
@@ -223,7 +223,7 @@ $(document).ready(function () {
 
   $(".submit").click(function () {
     submitForm();
-    window.location.href = "completed.html";
+    window.location.href = "https://josiahstephens.github.io/Bellu-Interview/completed.html";
     return false;
   });
 });
