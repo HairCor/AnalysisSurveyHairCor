@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<!-- Created by JJ Stephens May 2023 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bellu Labs Survey">
+    <title>Bellu Survey</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/form.js"></script>
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+  <!-- MultiStep Form -->
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <form id="msform">
+            <!-- progressbar -->
+            <ul id="progressbar">
+                <li class="active">Hair and Scalp</li>
+                <li>Lifestyle</li>
+                <li>History</li>
+                <li>Goals and Preferences</li>
+            </ul>
+            <!-- fieldsets -->
+            <fieldset>
+                <h2 class="fs-title">How thick is your hair?</h2>
+                <h3 class="fs-subtitle">Rub a single strand between your fingers. What does it feel like?</h3>
+                <input type="radio" id="very-fine" name="hair_thickness" value="very-fine">
+                <label for="very-fine">Very fine</label><br>
+                <input type="radio" id="fine" name="hair_thickness" value="fine">
+                <label for="fine">Fine</label><br>
+                <input type="radio" id="normal" name="hair_thickness" value="normal">
+                <label for="normal">Normal</label><br>
+                <input type="radio" id="coarse" name="hair_thickness" value="coarse">
+                <label for="coarse">Coarse</label><br>
+                <input type="radio" id="very-coarse" name="hair_thickness" value="very-coarse">
+                <label for="very-coarse">Very coarse</label><br>
+                
+                <input type="button" name="next" class="next action-button" value="Next"/>
+            </fieldset>
+            <fieldset>
+                <h2 class="fs-title">On average, how long does it take your hair to dry?</h2>
+                <input type="radio" id="halfhour" name="dry_time" value="30">
+                <label for="halfhour">30 minutes</label><br>
+                <input type="radio" id="hour" name="dry_time" value="60">
+                <label for="hour">1 hour</label><br>
+                <input type="radio" id="hourandahalf" name="dry_time" value="90">
+                <label for="hourandahalf">1.5 hours</label><br>
+                <input type="radio" id="twohours" name="dry_time" value="120">
+                <label for="twohours">2 hours</label><br>
+
+                <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                <input type="button" name="next" class="next action-button" value="Next"/>
+            </fieldset>
+            <fieldset>
+                <h2 class="fs-title">How long is your hair?</h2>
+                <h3 class="fs-subtitle">Enter your hair length in inches.</h3>
+                <input type="text" name="length" placeholder="Inches"/>
+
+                <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                <input type="button" name="next" class="next-section action-button" value="Next"/>
+            </fieldset>
+            <fieldset>
+                <h2 class="fs-title">How often do you bleach your hair?</h2>
+                <input type="radio" id="frequently1" name="bleach" value="30">
+                <label for="frequently1">Frequently</label><br>
+                <input type="radio" id="sometimes1" name="bleach" value="60">
+                <label for="sometimes1">Sometimes</label><br>
+                <input type="radio" id="rarely1" name="bleach" value="90">
+                <label for="rarely1">Rarely</label><br>
+                <input type="radio" id="never1" name="bleach" value="120">
+                <label for="never1">Never</label><br>
+
+                <input type="button" name="previous" class="previous-section action-button-previous" value="Previous"/>
+                <input type="button" name="next" class="next action-button" value="Next"/>
+            </fieldset>
+            <fieldset>
+                <h2 class="fs-title">How often do you color your hair?</h2>
+                <input type="radio" id="frequently2" name="color" value="30">
+                <label for="frequently2">Frequently</label><br>
+                <input type="radio" id="sometimes2" name="color" value="60">
+                <label for="sometimes2">Sometimes</label><br>
+                <input type="radio" id="rarely2" name="color" value="90">
+                <label for="rarely2">Rarely</label><br>
+                <input type="radio" id="never2" name="color" value="120">
+                <label for="never2">Never</label><br>
+
+                <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                <input type="button" name="next" class="next action-button" value="Next"/>
+            </fieldset>
+            <fieldset>
+                <h2 class="fs-title">Do you wear your hair in tight styles?</h2>
+                <input type="radio" id="yes1" name="tight" value="30">
+                <label for="yes1">Yes</label><br>
+                <input type="radio" id="no1" name="tight" value="60">
+                <label for="no1">No</label><br>
+
+                <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                <input type="button" name="next" class="next-section action-button" value="Next"/>
+            </fieldset>
+            <fieldset>
+                <h2 class="fs-title">Have you experienced hair loss?</h2>
+                <input type="radio" id="yes2" name="hairloss" value="30">
+                <label for="yes2">Yes</label><br>
+                <input type="radio" id="no2" name="hairloss" value="60">
+                <label for="no2">No</label><br>
+
+                <input type="button" name="previous" class="previous-section action-button-previous" value="Previous"/>
+                <input type="button" name="next" class="next action-button" value="Next"/>
+            </fieldset>
+            <fieldset>
+                <h2 class="fs-title">What is your natural hair color?</h2>
+                <input type="text" name="haircolor" placeholder=""/>
+
+                <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                <input type="button" name="next" class="next action-button" value="Next"/>
+            </fieldset>
+            <fieldset>
+                <h2 class="fs-title">Have any significant events in your life caused changes to your hair?</h2>
+                <h3 class="fs-subtitle">Sometimes signifcant or stressful life events, such as childbirth or menopause can cause changes to a person's hair. Please list below if you have noticed changes to your hair because of such a life event.</h3>
+                <input type="text" name="events" placeholder=""/>
+
+                <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                <input type="button" name="next" class="next-section action-button" value="Next"/>
+            </fieldset>
+            <fieldset>
+                <h2 class="fs-title">What is your goal for your hair?</h2>
+                <input type="text" name="goal" placeholder=""/>
+
+                <input type="button" name="previous" class="previous-section action-button-previous" value="Previous"/>
+                <input type="button" name="next" class="next action-button" value="Next"/>
+            </fieldset>
+            <fieldset>
+                <h2 class="fs-title">Are there any products that you don't like?</h2>
+                <h3 class="fs-subtitle">Please list the products and why you don't like them.</h3>
+                <input type="text" name="products" placeholder=""/>
+
+                <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                <input type="button" name="next" class="next action-button" value="Next"/>
+            </fieldset>
+            <fieldset>
+                <h2 class="fs-title">Is there anything else we should know?</h2>
+                <h3 class="fs-subtitle">This is the place to tell us any of your specific needs.</h3>
+                <input type="text" name="notes" placeholder=""/>
+                
+                <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                <input type="submit" name="submit" class="submit action-button" value="Submit"/>
+            </fieldset>
+        </form>
+    </div>
+</div>
+<!-- /.MultiStep Form -->
+</body>
+
+</html>
