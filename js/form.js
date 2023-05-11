@@ -6,10 +6,52 @@ var current_section = 0;
 var left, opacity, scale; //fieldset properties which we will animate
 var animating; //flag to prevent quick multi-click glitches
 
+// copied from https://stackoverflow.com/questions/57939882/saving-form-submitted-data-to-csv-file-using-javascript-jquery
+function clearForm() {
+  document.getElementById("form").reset();
+}
+
+function submitForm() {
+  var formData = $("form").serializeArray();
+  let csv = "data:text/csv;charset=utf-8,"; // accept data as CSV
+
+  const columnTitles = [
+    "Hair Thickness",
+    "Minutes to Dry",
+    "Length (Inches)",
+    "Bleach",
+    "Color",
+    "Tight Style",
+    "Hair Loss",
+    "Natural Hair Color",
+    "Life Events",
+    "Hair Goals",
+    "Disliked Products",
+    "Addition Information",
+  ];
+  csv += columnTitles.join(";") + "\n";
+
+  formData.forEach(function (item) {
+    csv += item.value + ";"; // concat form value on csv var and add ; to create columns (you can change to , if want)
+  });
+
+  var encodedUri = encodeURI(csv);
+
+  // if you want to download
+  var downloadLink = document.createElement("a");
+  downloadLink.setAttribute("download", "FILENAME.csv");
+  downloadLink.setAttribute("href", encodedUri);
+  document.body.appendChild(downloadLink); // Required for FF
+  downloadLink.click();
+  downloadLink.remove();
+
+  clearForm();
+}
+
 $(document).ready(function () {
   $(".next-section").click(function () {
     console.log("current_fs", current_fs);
-    
+
     if (animating) return false;
     animating = true;
 
@@ -64,9 +106,7 @@ $(document).ready(function () {
     previous_fs = $(this).parent().prev();
 
     //de-activate current step on progressbar
-    $("#progressbar li")
-      .eq(current_section)
-      .removeClass("active");
+    $("#progressbar li").eq(current_section).removeClass("active");
 
     console.log("current_section", current_section);
     current_section -= 1;
@@ -182,7 +222,8 @@ $(document).ready(function () {
   });
 
   $(".submit").click(function () {
-    window.location.href = "completed.html"
+    submitForm();
+    window.location.href = "completed.html";
     return false;
   });
 });
