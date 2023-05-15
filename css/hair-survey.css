@@ -41,7 +41,9 @@ html {
 
 body {
   height: 100%;
+  padding-top: 10px;
   font-family: lora, arial, verdana;
+  background: var(--blue1);
 }
 
 /*form styles*/
@@ -305,7 +307,7 @@ input[type="radio"]:checked + label {
   padding: 50px;
   text-align: center;
   border-radius: 10px;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.3);
 }
 
 .button {
