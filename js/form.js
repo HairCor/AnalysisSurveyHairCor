@@ -223,7 +223,7 @@ $(document).ready(function () {
 
   $(".submit").click(function () {
     submitForm();
-    window.location.href = "https://josiahstephens.github.io/Bellu-Interview/completed.html";
+    window.location.replace("completed.html");
     return false;
   });
 });

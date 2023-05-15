@@ -54,7 +54,7 @@ body {
   background: var(--white);
   border: 0 none;
   border-radius: 0px;
-  box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+  /* box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4); */
   padding: 20px 30px;
   box-sizing: border-box;
   width: 80%;
@@ -293,7 +293,7 @@ input[type="radio"]:checked + label {
 }
 
 .success-body {
-  background-color: var(--blue1);
+  /* background-color: var(--blue1); */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -301,11 +301,11 @@ input[type="radio"]:checked + label {
 }
 
 .success-message {
-  background-color: var(--white);
+  /* background-color: var(--white); */
   padding: 50px;
   text-align: center;
   border-radius: 10px;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+  /* box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3); */
 }
 
 .button {
