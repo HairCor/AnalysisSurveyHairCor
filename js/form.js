@@ -1,10 +1,9 @@
-console.log("form.js loaded");
-
 //jQuery time
 var current_fs, next_fs, previous_fs; //fieldsets
 var current_section = 0;
 var left, opacity, scale; //fieldset properties which we will animate
 var animating; //flag to prevent quick multi-click glitches
+var duration = 600;
 
 // copied from https://stackoverflow.com/questions/57939882/saving-form-submitted-data-to-csv-file-using-javascript-jquery
 function clearForm() {
@@ -12,45 +11,48 @@ function clearForm() {
 }
 
 function submitForm() {
-  var formData = $("form").serializeArray();
-  let csv = "data:text/csv;charset=utf-8,"; // accept data as CSV
+  
 
-  const columnTitles = [
-    "Hair Thickness",
-    "Minutes to Dry",
-    "Length (Inches)",
-    "Bleach",
-    "Color",
-    "Tight Style",
-    "Hair Loss",
-    "Natural Hair Color",
-    "Life Events",
-    "Hair Goals",
-    "Disliked Products",
-    "Addition Information",
-  ];
-  csv += columnTitles.join(";") + "\n";
 
-  formData.forEach(function (item) {
-    csv += item.value + ";"; // concat form value on csv var and add ; to create columns (you can change to , if want)
-  });
+  // var formData = $("form").serializeArray();
+  // let csv = "data:text/csv;charset=utf-8,"; // accept data as CSV
 
-  var encodedUri = encodeURI(csv);
+  // const columnTitles = [
+  //   "Goal",
+  //   "Minutes to Dry",
+  //   "Length (Inches)",
+  //   "Bleach",
+  //   "Color",
+  //   "Tight Style",
+  //   "Hair Loss",
+  //   "Natural Hair Color",
+  //   "Life Events",
+  //   "Hair Goals",
+  //   "Disliked Products",
+  //   "Addition Information",
+  // ];
+  // csv += columnTitles.join(";") + "\n";
 
-  // if you want to download
-  var downloadLink = document.createElement("a");
-  downloadLink.setAttribute("download", "FILENAME.csv");
-  downloadLink.setAttribute("href", encodedUri);
-  document.body.appendChild(downloadLink); // Required for FF
-  downloadLink.click();
-  downloadLink.remove();
+  // formData.forEach(function (item) {
+  //   csv += item.value + ";"; // concat form value on csv var and add ; to create columns (you can change to , if want)
+  // });
+
+  // var encodedUri = encodeURI(csv);
+
+  // // if you want to download
+  // var downloadLink = document.createElement("a");
+  // downloadLink.setAttribute("download", "FILENAME.csv");
+  // downloadLink.setAttribute("href", encodedUri);
+  // document.body.appendChild(downloadLink); // Required for FF
+  // downloadLink.click();
+  // downloadLink.remove();
 
   clearForm();
 }
 
 $(document).ready(function () {
   $(".next-section").click(function () {
-    console.log("current_fs", current_fs);
+    // console.log("current_fs", current_fs);
 
     if (animating) return false;
     animating = true;
@@ -58,9 +60,9 @@ $(document).ready(function () {
     current_fs = $(this).parent();
     next_fs = $(this).parent().next();
 
-    console.log("current_section", current_section);
+    // console.log("current_section", current_section);
     current_section += 1;
-    console.log("moved to section", current_section);
+    // console.log("moved to section", current_section);
 
     //activate next step on progressbar using the index of next_fs
     $("#progressbar li").eq(current_section).addClass("active");
@@ -83,9 +85,9 @@ $(document).ready(function () {
             transform: "scale(" + scale + ")",
             position: "absolute",
           });
-          next_fs.css({ left: left, opacity: opacity });
+          next_fs.css({opacity: opacity });
         },
-        duration: 800,
+        duration: duration,
         complete: function () {
           current_fs.hide();
           animating = false;
@@ -100,7 +102,7 @@ $(document).ready(function () {
     if (animating) return false;
     animating = true;
 
-    console.log("current_fs", current_fs);
+    // console.log("current_fs", current_fs);
 
     current_fs = $(this).parent();
     previous_fs = $(this).parent().prev();
@@ -108,9 +110,9 @@ $(document).ready(function () {
     //de-activate current step on progressbar
     $("#progressbar li").eq(current_section).removeClass("active");
 
-    console.log("current_section", current_section);
+    // console.log("current_section", current_section);
     current_section -= 1;
-    console.log("moved to section", current_section);
+    // console.log("moved to section", current_section);
 
     //show the previous fieldset
     previous_fs.show();
@@ -126,13 +128,13 @@ $(document).ready(function () {
           left = (1 - now) * 50 + "%";
           //3. increase opacity of previous_fs to 1 as it moves in
           opacity = 1 - now;
-          current_fs.css({ left: left });
+          // current_fs.css({ left: left });
           previous_fs.css({
             transform: "scale(" + scale + ")",
             opacity: opacity,
           });
         },
-        duration: 800,
+        duration: duration,
         complete: function () {
           current_fs.hide();
           animating = false;
@@ -144,7 +146,7 @@ $(document).ready(function () {
   });
 
   $(".next").click(function () {
-    console.log("current_fs", current_fs);
+    // console.log("current_fs", current_fs);
     if (animating) return false;
     animating = true;
 
@@ -169,9 +171,9 @@ $(document).ready(function () {
             transform: "scale(" + scale + ")",
             position: "absolute",
           });
-          next_fs.css({ left: left, opacity: opacity });
+          next_fs.css({opacity: opacity });
         },
-        duration: 800,
+        duration: duration,
         complete: function () {
           current_fs.hide();
           animating = false;
@@ -183,7 +185,6 @@ $(document).ready(function () {
   });
 
   $(".previous").click(function () {
-    console.log("current_fs", current_fs);
     if (animating) return false;
     animating = true;
 
@@ -204,13 +205,13 @@ $(document).ready(function () {
           left = (1 - now) * 50 + "%";
           //3. increase opacity of previous_fs to 1 as it moves in
           opacity = 1 - now;
-          current_fs.css({ left: left });
+          // current_fs.css({ left: left });
           previous_fs.css({
             transform: "scale(" + scale + ")",
             opacity: opacity,
           });
         },
-        duration: 800,
+        duration: duration,
         complete: function () {
           current_fs.hide();
           animating = false;
@@ -221,9 +222,9 @@ $(document).ready(function () {
     );
   });
 
-  $(".submit").click(function () {
-    submitForm();
-    window.location.replace("completed.html");
-    return false;
-  });
+  // $(".submit").click(function () {
+  //   submitForm();
+  //   window.location.replace("completed.html");
+  //   return false;
+  // });
 });

@@ -44,6 +44,53 @@ body {
   font-family: lora, arial, verdana;
 }
 
+.hidden {
+  display: none;
+}
+
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.loader {
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 20%;
+  position: relative;
+  border: 10px solid var(--red1);
+  top: 50%;
+  animation: loader 4000ms infinite;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(180deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  75% {
+    transform: rotate(360deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* end loading */
+
 /*form styles*/
 #msform {
   text-align: center;
@@ -158,10 +205,10 @@ body {
 
 #progressbar li {
   list-style-type: none;
-  color: white;
+  color: var(--gray1);
   text-transform: uppercase;
   font-size: 9px;
-  width: 25%;
+  width: 50%;
   float: left;
   position: relative;
   letter-spacing: 1px;
@@ -270,6 +317,55 @@ input[type="radio"]:checked + label {
   color: #fff;
   border-color: var(--blue1);
 }
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"] + label {
+  display: inline-block;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: 2px solid #ccc;
+  margin-right: 10px;
+  margin-top: 1em;
+  cursor: pointer;
+  width: 8rem;
+}
+
+input[type="checkbox"]:checked + label {
+  background-color: var(--blue1);
+  color: #fff;
+  border-color: var(--blue1);
+}
+
+#slider-labels1 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+#slider-labels1 label {
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Change the background color of the slider track */
+input[type="range"] {
+  width: 100%;
+  height: 1px;
+  background-color: var(--red1); /* Change this color */
+  outline: none;
+}
+
+/* Style the slider track */
+/* input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  background-color: #ddd; /* Change this color */
+  /* border-radius: 4px; */
+/* } */
 
 /* Style for the Next button */
 .action-button {
