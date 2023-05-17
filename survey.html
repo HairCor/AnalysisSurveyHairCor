@@ -33,7 +33,7 @@
                 <!-- <li>History</li>
                 <li>Goals and Preferences</li> -->
             </ul>
-            <!-- fieldsets -->        
+            <!-- fieldsets -->   
             <fieldset>
                 <h2 class="fs-title">I would like my hair to be:</h2>
                 <h3 class="fs-subtitle">(Select all that apply)</h3>
@@ -141,7 +141,6 @@
             </fieldset>
             <fieldset>
                 <h2 class="fs-title">How long is your hair?</h2>
-                <h3 class="fs-subtitle">Enter your hair length in inches.</h3>
                 <input type="radio" id="shorter2" name="q8" value="Shorter than shoulder-length">
                 <label for="shorter2">Shorter than shoulder-length</label><br>
                 <input type="radio" id="shoulder2" name="q8" value="About shoulder-length">
@@ -428,12 +427,12 @@
             <fieldset>
                 <h2 class="fs-title">Contact Information</h2>
 
-                <input type="email" name="Email" placeholder="Email"/>
+                <input type="email" name="Email" placeholder="Email" style="appearance:none;"/>
                 <input type="text" name="First Name" placeholder="First Name"/>
                 <input type="text" name="Last Name" placeholder="Last Name"/>
-                <input type="text" name="Phone Number" placeholder="Phone Number"/>
-                <input type="text" name="Age" placeholder="Age"/>
-                <input type="text" name="Zip Code" placeholder="Zip Code"/>
+                <input type="tel" name="Phone Number" placeholder="Phone Number"/>
+                <input type="number" name="Age" placeholder="Age"/>
+                <input type="number" name="Zip Code" placeholder="Zip Code"/>
 
                 <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
                 <input type="button" name="next" class="next action-button" value="Next"/>
@@ -475,17 +474,30 @@
 </body>
 
 <script>
+    clearForm();
     var scriptURL = "https://script.google.com/macros/s/AKfycbyVOMJ7NRexjxppJtVdFYpI9f4t1wWjfd1View8vyzd18AwW--4gxUHDokQ-PB6-R5BzQ/exec";
     const form = document.forms[0]
     const loading = document.querySelector('.loading')
 
+    // disable all next buttons
+    let nextButtons = document.querySelectorAll('.next');
+    for (let i = 0; i < nextButtons.length; i++) {
+        nextButtons[i].disabled = true;
+    }
+
     form.addEventListener("input", e => {
-        // document.querySelector('.action-button') .disabled = true;
-        // if a fieldset is empty, do not allow the user to click the next button
-        
-        // if (document.querySelector('.fs-show').querySelectorAll('input').length == 0) {
-            
-        // }
+        // enable the next button
+        let parentFieldSet = e.originalTarget.parentElement.closest("fieldset");
+        let currentNextButton = parentFieldSet.querySelector('.next');
+        if (currentNextButton == null) {
+            // must be a new section
+            currentNextButton = parentFieldSet.querySelector('.next-section');
+        }
+        if (currentNextButton == null) {
+            // must be submitting time
+            currentNextButton = parentFieldSet.querySelector('.submit');
+        }
+        currentNextButton.disabled = false;
     });
 
     form.addEventListener("submit", e => {
@@ -555,7 +567,13 @@
             fd.append(questionMap.get(checkboxName), text);
         }
 
-        console.log(fd);
+        // append the date and time to the formData object
+        // format: mm/dd/yyyy hh:mm:ss
+        let today = new Date();
+        let date = today.getMonth()+1 + '/' + today.getDate() + '/' + today.getFullYear();
+        let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        let dateTime = date + ' ' + time;
+        fd.append("Timestamp", dateTime);
         
         fetch(scriptURL, {
             method: "POST",

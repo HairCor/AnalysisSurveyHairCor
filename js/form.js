@@ -11,42 +11,6 @@ function clearForm() {
 }
 
 function submitForm() {
-  
-
-
-  // var formData = $("form").serializeArray();
-  // let csv = "data:text/csv;charset=utf-8,"; // accept data as CSV
-
-  // const columnTitles = [
-  //   "Goal",
-  //   "Minutes to Dry",
-  //   "Length (Inches)",
-  //   "Bleach",
-  //   "Color",
-  //   "Tight Style",
-  //   "Hair Loss",
-  //   "Natural Hair Color",
-  //   "Life Events",
-  //   "Hair Goals",
-  //   "Disliked Products",
-  //   "Addition Information",
-  // ];
-  // csv += columnTitles.join(";") + "\n";
-
-  // formData.forEach(function (item) {
-  //   csv += item.value + ";"; // concat form value on csv var and add ; to create columns (you can change to , if want)
-  // });
-
-  // var encodedUri = encodeURI(csv);
-
-  // // if you want to download
-  // var downloadLink = document.createElement("a");
-  // downloadLink.setAttribute("download", "FILENAME.csv");
-  // downloadLink.setAttribute("href", encodedUri);
-  // document.body.appendChild(downloadLink); // Required for FF
-  // downloadLink.click();
-  // downloadLink.remove();
-
   clearForm();
 }
 
