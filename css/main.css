@@ -295,6 +295,12 @@ fieldset {
   margin-bottom: 10px;
 }
 
+.two-column-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+
 /* Style for the radio buttons */
 input[type="radio"] {
   display: none;
@@ -310,6 +316,10 @@ input[type="radio"] + label {
   margin-top: 1em;
   cursor: pointer;
   width: 8rem;
+}
+
+.two-column-grid input[type="radio"] + label {
+  width: 3rem;
 }
 
 input[type="radio"]:checked + label {
@@ -358,14 +368,6 @@ input[type="range"] {
   background-color: var(--red1); /* Change this color */
   outline: none;
 }
-
-/* Style the slider track */
-/* input[type="range"]::-webkit-slider-runnable-track {
-  width: 100%;
-  height: 8px;
-  background-color: #ddd; /* Change this color */
-  /* border-radius: 4px; */
-/* } */
 
 /* Style for the Next button */
 .action-button {
