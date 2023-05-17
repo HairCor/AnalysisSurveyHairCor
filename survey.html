@@ -479,6 +479,15 @@
     const form = document.forms[0]
     const loading = document.querySelector('.loading')
 
+    form.addEventListener("input", e => {
+        // document.querySelector('.action-button') .disabled = true;
+        // if a fieldset is empty, do not allow the user to click the next button
+        
+        // if (document.querySelector('.fs-show').querySelectorAll('input').length == 0) {
+            
+        // }
+    });
+
     form.addEventListener("submit", e => {
         var formData = $("form").serializeArray();
         
