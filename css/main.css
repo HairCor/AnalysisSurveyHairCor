@@ -45,6 +45,12 @@ body {
   font-family: lora, arial, verdana;
 }
 
+/* This is to stop mobile drag refresh */
+html,
+body {
+    overscroll-behavior-y: contain;
+}
+
 .hidden {
   display: none;
   width: 0;
