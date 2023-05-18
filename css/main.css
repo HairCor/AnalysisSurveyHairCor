@@ -80,7 +80,7 @@ body {
   height: 40px;
   border-radius: 20%;
   position: relative;
-  border: 10px solid var(--red1);
+  border: 10px solid var(--blue);
   top: 50%;
   animation: loader 4000ms infinite;
 }
@@ -272,7 +272,7 @@ body {
 /*The number of the step and the connector before it = green*/
 #progressbar li.active:before,
 #progressbar li.active:after {
-  background: var(--red1);
+  background: var(--blue1);
   color: white;
 }
 
@@ -418,7 +418,7 @@ label span {
 
 .button {
   padding: 10px 20px;
-  background-color: var(--red1);
+  background-color: var(--blue1);
   color: var(--white);
   border: none;
   border-radius: 5px;
