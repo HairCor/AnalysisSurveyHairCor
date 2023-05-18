@@ -164,7 +164,7 @@ body {
 /*buttons*/
 #msform .action-button {
   width: 100px;
-  background: var(--red1);
+  background: var(--blue1);
   font-weight: bold;
   color: white;
   border: 0 none;
@@ -178,6 +178,11 @@ body {
 #msform .action-button:hover,
 #msform .action-button:focus {
   box-shadow: 0 0 0 2px white, 0 0 0 3px var(--gray2);
+}
+
+#msform .action-button:disabled:hover,
+#msform .action-button:disabled:focus {
+  box-shadow: none;
 }
 
 #msform .action-button-previous {
@@ -300,12 +305,6 @@ fieldset {
   margin: 0;
 }
 
-input[type="radio"]:checked + label {
-  background-color: var(--blue1);
-  color: #fff;
-  border-color: var(--blue1);
-}
-
 input[type="checkbox"], input[type="radio"] {
   display: none;
 }
@@ -323,7 +322,7 @@ input[type="checkbox"] + label, input[type="radio"] + label {
   width: 100%;
 }
 
-input[type="checkbox"]:checked + label {
+input[type="checkbox"]:checked + label, input[type="radio"]:checked + label {
   background-color: var(--blue1);
   color: #fff;
   border-color: var(--blue1);
@@ -430,6 +429,13 @@ label span {
 
 #msform .action-button:disabled {
   background-color: var(--gray5);
+}
+
+/* For bad inputs in text fields */
+.error {
+  background-color: var(--red1);
+  font-size: 12px;
+  margin-top: 0.5rem;
 }
 
 /* #msform .submit:disabled {

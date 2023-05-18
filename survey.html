@@ -27,13 +27,13 @@
     <div class="col-md-6 col-md-offset-3 max-width">
         <form id="msform" method="POST" action="https://script.google.com/macros/s/AKfycbw9F4U_l_jsb9dlASUBtkKvMeGGe5LHkD22qjN-4nxlnIR16BIDqr_WFoBAWrbOG4HC/exec">
             <!-- progressbar -->
-            <ul id="progressbar">
+            <!-- <ul id="progressbar">
                 <li class="active">Hair and Scalp</li>
                 <li>Lifestyle</li>
-                <!-- <li>History</li>
-                <li>Goals and Preferences</li> -->
-            </ul>
-            <!-- fieldsets -->   
+                <li>History</li>
+                <li>Goals and Preferences</li>
+            </ul> -->
+            <!-- fieldsets -->
             <fieldset>
                 <h2 class="fs-title">I would like my hair to be:</h2>
                 <h3 class="fs-subtitle">(Select all that apply)</h3>
@@ -543,19 +543,19 @@
                 <input type="button" name="next" class="next action-button" value="Next"/>
             </fieldset>
             
-            <!-- <fieldset>
+            <fieldset class="text-required">
                 <h2 class="fs-title">Contact Information</h2>
 
-                <input type="email" name="Email" placeholder="Email" style="appearance:none;"/>
-                <input type="text" name="First Name" placeholder="First Name"/>
-                <input type="text" name="Last Name" placeholder="Last Name"/>
-                <input type="tel" name="Phone Number" placeholder="Phone Number"/>
-                <input type="number" name="Age" placeholder="Age"/>
-                <input type="number" name="Zip Code" placeholder="Zip Code"/>
+                <input type="email" name="Email" placeholder="Email" style="appearance:none;" required/>
+                <input type="text" name="First Name" placeholder="First Name" required/>
+                <input type="text" name="Last Name" placeholder="Last Name" required/>
+                <input type="tel" name="Phone Number" placeholder="Phone Number" inputmode="numeric" oninput="this.value = this.value.replace(/\D+/g, '')" required/>
+                <input type="number" name="Age" placeholder="Age" inputmode="numeric" oninput="this.value = this.value.replace(/\D+/g, '')" required/>
+                <input type="number" name="Zip Code" placeholder="Zip Code" inputmode="numeric" oninput="this.value = this.value.replace(/\D+/g, '')" required/>
 
                 <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
                 <input type="button" name="next" class="next action-button" value="Next"/>
-            </fieldset> -->
+            </fieldset>
             <fieldset class="optional">
                 <h2 class="fs-title">Lab ID</h2>
                 <h3 class="fs-subtitle">BelluLabs ID (for salon owners only)</h3>
@@ -616,21 +616,69 @@
     form.addEventListener("input", e => {
         // enable the next button
         let parentFieldSet = e.target.parentElement.closest("fieldset");
-        let currentNextButton = parentFieldSet.querySelector('.next');
-        if (currentNextButton == null) {
-            // must be a new section
-            currentNextButton = parentFieldSet.querySelector('.next-section');
+
+        const em = "example@example.com";
+        const isValid = validateEmail(em);
+        // console.log(isValid);
+        
+        // if the parent fieldset has a required input that is empty, disable the next button
+        if (parentFieldSet.classList.contains('text-required')) {
+            
+            let email = parentFieldSet.querySelector('input[type="email"]');
+            let firstName = parentFieldSet.querySelector('input[name="First Name"]');
+            let lastName = parentFieldSet.querySelector('input[name="Last Name"]');
+            let phoneNumber = parentFieldSet.querySelector('input[name="Phone Number"]');
+            let age = parentFieldSet.querySelector('input[name="Age"]');
+            let zipCode = parentFieldSet.querySelector('input[name="Zip Code"]');
+            
+            if (validateEmail(email.value) || email.value == "") {
+                email.classList.remove('error');
+            }
+            else {
+                email.classList.add('error');
+            }
+            
+            if (validateAge(age.value) || age.value == "") {
+                age.classList.remove('error');
+            }
+            else {
+                age.classList.add('error');
+            }
+
+            if (validateZipCode(zipCode.value) || zipCode.value == "") {
+                zipCode.classList.remove('error');
+            }
+            else {
+                zipCode.classList.add('error');
+            }
+
+            // check if all required fields are filled
+            if (email.value == "" || firstName.value == "" || lastName.value == "" || phoneNumber.value == "" || age.value == "" || zipCode.value == "") {
+                let currentNextButton = parentFieldSet.querySelector('.next');
+                currentNextButton.disabled = true;
+            }
+            else {
+                let currentNextButton = parentFieldSet.querySelector('.next');
+                currentNextButton.disabled = false;
+            }
         }
-        if (currentNextButton == null) {
-            // must be submitting time
-            console.log("here");
-            // currentNextButton = parentFieldSet.querySelector('.submit');
+        else {
+            let currentNextButton = parentFieldSet.querySelector('.next');
+            if (currentNextButton == null) {
+                // must be a new section
+                currentNextButton = parentFieldSet.querySelector('.next-section');
+            }
+            if (currentNextButton == null) {
+                // must be submitting time
+                // console.log("here");
+                // currentNextButton = parentFieldSet.querySelector('.submit');
+            }
+            currentNextButton.disabled = false;
         }
-        currentNextButton.disabled = false;
     });
 
     form.addEventListener("submit", e => {
-        console.log("attempting to submit");
+        // console.log("attempting to submit");
         var formData = $("form").serializeArray();
         
         e.preventDefault();
@@ -638,7 +686,7 @@
         loading.classList.remove('hidden');
 
         let fd = new FormData(form);
-        console.log(fd);
+        // console.log(fd);
 
         /* If more than one checkbox is selected, the form will have multiple keys 
             (checkbox name). Only the first checkbox value would be entered into 
@@ -675,7 +723,7 @@
         questionMap.set("q24", "Are you currently taking any supplements or medications?");
 
         for (const key of questionMap.keys()) {
-            console.log(key);
+            // console.log(key);
             checkboxName = key;
             let checkBoxValues = fd.getAll(checkboxName)
 
