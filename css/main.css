@@ -80,7 +80,7 @@ body {
   height: 40px;
   border-radius: 20%;
   position: relative;
-  border: 10px solid var(--blue);
+  border: 10px solid var(--blue1);
   top: 50%;
   animation: loader 4000ms infinite;
 }
