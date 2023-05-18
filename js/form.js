@@ -188,7 +188,7 @@ $(document).ready(function () {
 
   // $(".submit").click(function () {
   //   submitForm();
-  //   window.location.replace("completed.html");
+  //   // window.location.replace("completed.html");
   //   return false;
   // });
 });
