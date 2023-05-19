@@ -441,6 +441,11 @@ label span {
   margin-top: 0.5rem;
 }
 
+.no-link-display {
+  text-decoration: none;
+  color: var(--white);
+}
+
 /* #msform .submit:disabled {
   background-color: var(--gray5);
 }
