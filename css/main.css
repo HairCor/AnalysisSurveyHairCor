@@ -207,7 +207,6 @@ body {
   font-size: 20px;
   color: #2c3e50;
   margin-bottom: 10px;
-  letter-spacing: 2px;
   font-weight: bold;
 }
 
@@ -433,7 +432,7 @@ label span {
 
 /* For bad inputs in text fields */
 .error {
-  background-color: var(--red1);
+  background-color: var(--red2);
   font-size: 12px;
   margin-top: 0.5rem;
 }
