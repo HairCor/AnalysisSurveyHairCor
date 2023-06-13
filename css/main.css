@@ -347,7 +347,7 @@ input[type="number"] {
 
 textarea {
   resize: none;
-  height: 20rem;
+  height: 10rem;
 }
 
 label span {
