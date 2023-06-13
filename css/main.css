@@ -345,6 +345,11 @@ input[type="number"] {
   /* Firefox */
 }
 
+textarea {
+  resize: none;
+  height: 20rem;
+}
+
 label span {
   padding: 0 0.75rem;
 }
