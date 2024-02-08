@@ -1,3 +1,3 @@
-# Bellu-Interview
+# About
 
-When clients purchase the Bellu service, they receive a hair collection kit in the mail. The kit has a QR code that then takes clients to a web survey. This is a web project to create an improved survey for users to fill out after receiving the kit.
+This repository needs to be deleted, it was copied from Bellu on accident because we are hosting the survey as part of the react app
